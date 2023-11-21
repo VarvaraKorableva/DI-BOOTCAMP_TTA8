@@ -1,0 +1,51 @@
+.container {
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    grid-template-areas: 
+    "red1 blue1 blue1"
+    "red blue2 blue2"
+    "red3 blue3 blue3"
+    "yellow yellow yellow";
+}
+.item1 {
+    grid-area: red1;
+    background-color: rgb(222, 118, 118);
+ 
+}
+.item2 {
+    grid-area: blue1;
+    background-color: rgb(162, 162, 238);
+
+}
+
+.item3 {
+    grid-area: red2;
+    background-color: rgb(222, 118, 118);
+ 
+}
+.item4 {
+    grid-area: blue2;
+    background-color: rgb(162, 162, 238);
+
+}
+
+.item5 {
+    grid-area: red3;
+    background-color: rgb(222, 118, 118);
+ 
+}
+.item6 {
+    grid-area: blue3;
+    background-color: rgb(162, 162, 238);
+
+}
+
+.item7 {
+    grid-area: yellow;
+    background-color: rgb(221, 255, 0);
+
+}
+
+

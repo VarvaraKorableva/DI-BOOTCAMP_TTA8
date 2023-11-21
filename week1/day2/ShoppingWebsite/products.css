@@ -1,9 +1,3 @@
-/*.product {
-    display: flex;
-    margin: auto;
-    align-items: center;
-}*/
-
 .product__wrapper {
     padding: 0;
     width: 100%; /* Ширина контейнера по ширине экрана */
