@@ -10,9 +10,10 @@ elif len(string10) == 10:
     print('perfect string')
 
 print(f'first character is {string10[0]}, second character is {string10[len(string10) -1]}') 
-
+letter_str = ''
 for i in string10:
-    print(i)
+    letter_str += i
+    print(letter_str)
 
 str_to_l = list(string10)
 random.shuffle(str_to_l)
