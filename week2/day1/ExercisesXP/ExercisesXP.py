@@ -54,8 +54,9 @@ else:
 #Exercise 9
 
 height_inches = int(input('What is your height in inches? Please, input it here:'))
+cm = 2,54
 
-if height_inches > 145:
+if height_inches * 2.54 > 145:
     print('You are tall enough to ride')
 else:
     print('You need to grow some more to ride')     
