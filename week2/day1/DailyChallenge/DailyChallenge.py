@@ -17,7 +17,8 @@ for i in string10:
 
 str_to_l = list(string10)
 random.shuffle(str_to_l)
+new_str = ''.join(str_to_l)
 
-print(str_to_l)
+print(new_str)
 
 
