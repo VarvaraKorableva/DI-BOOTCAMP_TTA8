@@ -161,4 +161,13 @@ disney_users_A_If = dict(zip(letter_i_users, numbers))
 print(disney_users_A_If)
 
 #The characters, which names start with the letter “m” or “p”.
+users = ["Mickey","Minnie","Donald","Ariel","Pluto"]
+starts_letters_m_or_p = []
 
+for item in users:
+        if item[0].lower() == "m" or item[0].lower() == "p":
+            starts_letters_m_or_p.append(item)    
+            
+numbers = list(range(len(starts_letters_m_or_p)))
+disney_users_M_or_P = dict(zip(starts_letters_m_or_p, numbers))
+print(disney_users_M_or_P)
