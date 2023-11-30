@@ -246,6 +246,9 @@ def ask_and_check_questions_func(data):
     for i in zip(wrong_answered_questions, wrong_answers, correct_answer):
         print(f'For question "{i[0]}", you answer was "{i[1]}", correct answer is "{i[2]}"')
     if len(wrong_answers) > 3:
-        print('Do you want to play again?')    
+        answer = input('Do you want to play again?')  
+        if answer == 'yes':
+            ask_and_check_questions_func(data)
+        
 
 ask_and_check_questions_func(data)
