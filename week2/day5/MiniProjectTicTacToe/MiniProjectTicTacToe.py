@@ -77,7 +77,7 @@ def find_place_func(row, column, player, board):
         board[3][8] = player 
         display_board(board) 
     elif row == 2  and column == 3:  
-        board[3][12] = player 
+        board[3][12] = player
         display_board(board)      
     elif row == 3  and column == 1:  
         board[5][4] = player 
@@ -106,19 +106,32 @@ def check_win(board):
         return True
     elif (board[1][12] == "X" and  board[3][8] == "X" and board[5][4] == "X") or (board[1][12] == "0" and  board[3][8] == "0" and board[5][4] == "0"):
         return True
+    
+
+def draw_func(board, win):
+    all_places = []
+    for i in range(4, 13, 4):
+        for j in range(1, 6, 2):
+            all_places.append(board[j][i])
+    if ' ' not in all_places and not win:
+        print('Game over: draw')
+        return True
+                
 
 def main(board):
     print('Welcome to tic tac toe')
     player = 'X'
     win = False
+    draw = False
     display_board(board)
 
     while not(win):
         row, column = player_input(player)
         find_place_func(row, column, player, board)
         win = check_win(board)
+        draw = draw_func(board, win)
 
-        if win:
+        if win or draw:
             break
 
         if player == 'X':
