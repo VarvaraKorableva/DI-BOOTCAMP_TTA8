@@ -1,7 +1,7 @@
 import random
 import json
 # Exercise 1 – Random Sentence Generator
-'''
+
 def get_words_from_file(file_name):
     with open (file_name,'r') as f:
         file_text = f.read()
@@ -27,7 +27,7 @@ def main():
     except ValueError:
         print('You need to input whole number between 2 and 20')
 
-main()'''
+main()
 
 #Exercise 2: Working With JSON
 
