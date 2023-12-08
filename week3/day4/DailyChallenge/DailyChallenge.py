@@ -3,12 +3,6 @@ import string
 import re
 #Daily Challenge : Text Analysis
 
-'''
-Part I
-
-a method that returns the most common word in the text.
-a method that returns a list of all the unique words in the text.
-'''
 class Text():
     def __init__(self, text):
         self.text = text
@@ -26,7 +20,7 @@ class Text():
         return most_common_word
 
     def unique(self):
-        unique_words = list(set(self.text.lower().split() ))
+        unique_words = list(set(self.text.lower().split()))
         return unique_words  
 
     @classmethod
