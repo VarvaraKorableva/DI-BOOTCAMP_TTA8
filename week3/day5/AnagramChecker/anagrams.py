@@ -2,25 +2,29 @@ import re
 from anagram_checker import AnagramChecker
 
 def valid_word_func():
-    word = ''
-    while word != 'EXIT':
+    text = AnagramChecker('norvig.com_ngrams_sowpods.txt')
+    
+    while True:
+        word = input('If you want to exit, enter EXIT (in capital letters).if you want to try your word, enter one word here:')
+
         if word == 'EXIT':
             break
+        if not bool(re.match("^[a-zA-Z]+$", word)):
+            print("Please, don't write any special characters or numbers or spaces")    
+        else:
+            result = text.get_anagrams(word)  
 
-        word = input('''If you want to exit, enter EXIT (in capital letters).
-        if you want to try your word, enter one word here:''')
+            if type(result) is str:
+                print(result)
 
-        for i in word.strip():
-            if i == " ":
-                print ('You need to input only one word')
-            elif bool(re.match("^[a-zA-Z]+$", i)):
-                return word
+            elif len(result):          
+                to_return_inscription = [f'YOUR WORD: "{word.upper()}"', 'this is a valid English word.', f"Anagrams for your word: {', '.join(result)}"]      
+                for i in to_return_inscription:   
+                    print(i) 
             else:
-                print("Please, don't write any special characters or numbers")
-    return word         
+                to_return_inscription = [f'YOUR WORD: "{word.upper()}"', 'this is a valid English word.', "There are no anagrams for your word."]      
+                for i in to_return_inscription:   
+                    print(i)          
+       
 
-valid_word = valid_word_func() 
-
-text = AnagramChecker('norvig.com_ngrams_sowpods.txt')
-
-text.get_anagrams(valid_word)
+valid_word_func()
