@@ -1,0 +1,32 @@
+Part 1 : Quizz :
+Answer the following questions
+
+What is a class? 
+    It is a blueprint or description used to create objects. 
+    It represents a basic structure defining the attributes (variables) 
+    and methods (functions) that will be present in objects of that class.
+
+What is an instance?
+    An instance of a class is an object that can use all the methods of the class.
+
+What is encapsulation?
+    It is one of the most important principles of OOP. It means that a class can 
+    have methods that will be used only within this class.
+
+What is abstraction?
+    Abstraction in programming is the process of hiding unnecessary details and 
+    providing only essential information for working with an object or system. 
+
+What is inheritance?
+    It means than new class(which is inherit from parrent class) will take all methods which belong to parrent class.
+
+What is multiple inheritance?
+    Multiple inheritance means that class can to inherit all methods from parents classes (unlimited quantity times)
+
+What is polymorphism?
+    This is the ability of objects to use methods with the same names.
+
+What is method resolution order or MRO?
+    Method Resolution Order (MRO) is the sequence that determines which method will be called 
+    on an instance of a class or during inheritance. It's the specific order in which the interpreter looks 
+    for methods in the class hierarchy, starting from the class itself and then following the chain of its ancestors.
