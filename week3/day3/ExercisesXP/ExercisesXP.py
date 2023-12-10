@@ -20,9 +20,6 @@ class Currency:
     def __repr__(self):
         return f"{self.amount} {self.currency}s"
     
-    #def __add__(self, other):
-    #    return self.amount + int(other)
-    
     def __add__(self, other):
         if isinstance(other, Currency):
             if self.currency != other.currency:
