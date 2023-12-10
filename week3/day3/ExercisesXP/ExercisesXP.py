@@ -20,19 +20,24 @@ class Currency:
     def __repr__(self):
         return f"{self.amount} {self.currency}s"
     
-    def __add__(self, other):
-        return self.amount + int(other)
+    #def __add__(self, other):
+    #    return self.amount + int(other)
     
-    def __iadd__(self, other):
-        pass
-        
-        '''try: 
-            self.amount += int(other.amount)
-            return self.amount
+    def __add__(self, other):
+        if isinstance(other, Currency):
+            if self.currency != other.currency:
+                raise TypeError(f"Cannot add between Currency types {self.currency} and {other.currency}")
+            return Currency(self.currency, self.amount + other.amount)
+        return Currency(self.currency, self.amount + other)
 
-        except TypeError:
-            print(f"Cannot add between Currency type {self.currency} and {other.currency}")
-'''
+    def __iadd__(self, other):
+        if isinstance(other, Currency):
+            if self.currency != other.currency:
+                raise TypeError(f"Cannot add between Currency types {self.currency} and {other.currency}")
+            self.amount += other.amount
+        else:
+            self.amount += other
+        return self
 
 
 
@@ -48,26 +53,15 @@ print(c1 + 5)
 print(c1 + c2)
 print(c1)
 
-
-'''
 c1 += 5
-c1
-10 dollars
+print(c1)
 
 c1 += c2
- c1
-20 dollars
+print(c1)
 
-c1 + c3
-TypeError: Cannot add between Currency type <dollar> and <shekel>
-'''     
+c1 + c3 
 
 # Exercise 3: String Module
-'''
-string.ascii_letters
-The concatenation of the ascii_lowercase and ascii_uppercase constants described below. 
-This value is not locale-dependent.
-'''
 
 def generate_random_string(length):
     letters = string.ascii_letters
@@ -85,23 +79,36 @@ def display_current_date():
 display_current_date()
 
 #Exercise 5 : Amount Of Time Left Until January 1st
-'''
-Exercise 5 : Amount Of Time Left Until January 1st
-Instructions
-Create a function that displays the amount of time left from now until January 1st.
-(Example: the 1st of January is in 10 days and 10:34:01hours).
-'''
+
+def display_time():
+    now = datetime.datetime.now()
+    next_year = now.year + 1
+    first_january = datetime.datetime(next_year, 1, 1)
+    difference = first_january - now
+    days = difference.days
+    hours, remainder = divmod(difference.seconds, 3600)
+    minutes, seconds = divmod(remainder, 60)
+
+    return f"The 1st of January is in {days} days and {hours}:{minutes}:{seconds} hours."
+
+print(display_time())
+
 #Exercise 6 : Birthday And Minutes
 
 def min_of_live_func(birthdate):
-    today =  datetime.datetime.now().date()
-    years_of_live = today - birthdate
+    birth_datetime = datetime.datetime.strptime(birthdate, '%Y-%m-%d')
+    today = datetime.datetime.now().date()
+    years_of_lived = today - birth_datetime.date()
+    minutes_lived = years_of_lived.total_seconds() / 60
 
+    return int(minutes_lived)
 
+print(f'You live near {min_of_live_func("1990-12-04")} mins')
 
 
 
 #Exercise 7 : Faker Module
+
 fake = Faker()
 users = []
 
@@ -114,4 +121,3 @@ def adding_func():
 
 adding_func()
 print(users)
- 
