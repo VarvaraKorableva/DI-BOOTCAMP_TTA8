@@ -1,13 +1,16 @@
 #Exercise 1 : Restaurant Menu Manager
 import psycopg2
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
 # Установка соединения с базой данных
 conn = psycopg2.connect(
-    dbname = 'ungancxx',
-    user='ungancxx',
-    password='iadIBxUxB7ayQ0F6D04eup7D_TPFGIIW',
-    host='flora.db.elephantsql.com', 
-    port='5432'
+    dbname=os.getenv('DB_NAME'),
+    user=os.getenv('DB_USER'),
+    password=os.getenv('DB_PASS'),
+    host=os.getenv('DB_HOST'), 
+    port=os.getenv('PORT')
 )
 # Создание объекта курсора
 cur = conn.cursor()
