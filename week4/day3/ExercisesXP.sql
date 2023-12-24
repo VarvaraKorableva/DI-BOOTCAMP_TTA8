@@ -94,3 +94,139 @@ or does it need extra checking?*/
 SELECT COUNT(RENTAL_ID) FROM rental WHERE RETURN_DATE IS NULL
 
 --Find the 30 most expensive movies which are outstanding (ie. have not been returned to the store yet)
+SELECT f.title, f.rental_rate
+FROM film AS f
+INNER JOIN inventory AS i ON f.film_id = i.film_id
+INNER JOIN rental AS r ON i.inventory_id = r.inventory_id
+WHERE r.return_date IS NULL
+ORDER BY f.rental_rate DESC
+LIMIT 30;
+
+-- Your friend is at the store, and decides to rent a movie. 
+-- He knows he wants to see 4 movies, but he can’t remember their names.
+-- Can you help him find which movies he wants to rent?
+-- The 1st film : The film is about a sumo wrestler, and one of the actors is Penelope Monroe.
+SELECT actor_id FROM actor WHERE (first_name='Penelope') AND (last_name='Monroe') -- Her Actor ID 120
+-- SELECT film_id FROM film_actor WHERE (actor_id='120')
+-- SELECT ARRAY_AGG(film_id) AS film_ids FROM film_actor WHERE actor_id = '120';
+-- SELECT title, film_id, fulltext FROM film WHERE film_id IN (SELECT film_id FROM film_actor WHERE actor_id = ('120'));
+-- SELECT title, film_id, description
+
+--VERSION SIMILAR TO SOLUTION VIDEO
+-- FROM film
+-- WHERE film_id IN (
+--     SELECT film_id 
+--     FROM film_actor 
+--     WHERE actor_id IN (
+--         SELECT actor_id 
+--         FROM actor 
+--         WHERE first_name = 'Penelope' AND last_name = 'Monroe'
+--     )
+-- ) AND fulltext @@ to_tsquery('sumo');
+
+-- MY VERSION without using tsquery 
+-- SELECT title, film_id, description
+-- FROM film
+-- WHERE film_id IN (
+--     SELECT film_id 
+--     FROM film_actor 
+--     WHERE actor_id IN (
+--         SELECT actor_id 
+--         FROM actor 
+--         WHERE first_name = 'Penelope' AND last_name = 'Monroe'
+--     )
+-- ) AND (
+--     LOWER(description) LIKE '%sumo%' OR 
+--     LOWER(description) LIKE '%wrestler%' OR 
+--     LOWER(description) LIKE '%sumo wrestler%'
+-- );
+
+
+--BEST VERSION THAT I THOUGHT OF AFTER DOING THE FIRST TWO
+SELECT title FROM film
+WHERE film_id IN (
+    (SELECT film_id FROM film
+    WHERE LOWER(description) LIKE '%sumo%' OR 
+          LOWER(description) LIKE '%wrestler%' OR 
+          LOWER(description) LIKE '%sumo wrestler%')
+    INTERSECT
+    (SELECT film_id FROM film_actor WHERE actor_id = '120')
+);
+
+--BEST VERSION THAT I THOUGHT OF AFTER DOING THE FIRST TWO
+SELECT title FROM film
+WHERE film_id IN (
+    (SELECT film_id FROM film
+    WHERE LOWER(description) LIKE '%sumo%' OR 
+          LOWER(description) LIKE '%wrestler%' OR 
+          LOWER(description) LIKE '%sumo wrestler%')
+    INTERSECT
+    (SELECT film_id FROM film_actor WHERE actor_id = '120')
+);
+
+-- The 2nd film : A short documentary (less than 1 hour long), rated “R”.
+SELECT title, length, rating, description from film 
+WHERE length < 60
+AND rating = 'R'
+AND LOWER(description) LIKE '%documentary%'
+
+-- The 3rd film : A film that his friend Matthew Mahan rented. He paid over $4.00 for the rental, and he returned it between the 28th of July and the 1st of August, 2005.
+
+-- Step 1: Find Matthew Mahan's Customer ID (323)
+SELECT customer_id
+FROM customer
+WHERE first_name = 'Matthew' AND last_name = 'Mahan';
+
+-- Step 2: Find Rental IDs for Matthew Mahan's Rentals (7275. 7937, 8790)
+SELECT rental_id
+FROM rental
+WHERE customer_id = 323
+AND return_date BETWEEN '2005-07-28' AND '2005-08-01';
+
+-- Step 3: Find Payment Details for These Rentals (7937)
+SELECT rental_id
+FROM payment
+WHERE customer_id = 323
+AND amount > 4.00
+AND rental_id IN (7275, 7937, 8790);
+
+-- Step 4: Find the Inventory IDs from the Rental IDs (3944)
+SELECT inventory_id
+FROM rental
+WHERE rental_id = 7937;
+
+-- Step 5: Find the Film IDs from the Inventory IDs (859)
+SELECT film_id
+FROM inventory
+WHERE inventory_id = 3944;
+
+-- Step 6: Get the Film Titles from the Film IDs
+SELECT title
+FROM film
+WHERE film_id = 859;
+
+SELECT f.title
+FROM film f
+JOIN inventory i ON f.film_id = i.film_id
+JOIN rental r ON i.inventory_id = r.inventory_id
+JOIN customer c ON r.customer_id = c.customer_id
+JOIN payment p ON r.rental_id = p.rental_id
+WHERE c.first_name = 'Matthew' 
+AND c.last_name = 'Mahan'
+AND p.amount > 4.00
+AND r.return_date BETWEEN '2005-07-28' AND '2005-08-01'
+
+
+-- The 4th film : His friend Matthew Mahan watched this film, as well. It had the word “boat” in the title or description, and it looked like it was a very expensive DVD to replace.
+
+SELECT f.title, f.description, f.replacement_cost
+FROM film f
+JOIN inventory i ON f.film_id = i.film_id
+JOIN rental r ON i.inventory_id = r.inventory_id
+JOIN customer c ON r.customer_id = c.customer_id
+WHERE (LOWER(f.title) LIKE '%boat%' OR LOWER(f.description) LIKE '%boat%')
+AND c.first_name = 'Matthew' AND c.last_name = 'Mahan'
+ORDER BY f.replacement_cost DESC;
+
+-- Answer it has to be one of those two films "Stone Fire" or "Money Harold"
+-- We need to ask Matthew to look at the description and make the final choice.
