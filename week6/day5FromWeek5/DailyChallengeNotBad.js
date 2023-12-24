@@ -16,12 +16,23 @@ If the word “bad” does not come after “not” or the words are not in the 
 */
 
 const sentence = 'The movie is not that bad, I like it'
+
+const indexOfNot = sentence.indexOf('not')
+const indexOfBad = sentence.indexOf('bad')
+
 const wordNot = sentence.substring(13,16)
 const wordBad = sentence.substring(22,25)
 
 if (sentence.indexOf(wordBad) > sentence.indexOf(wordNot)) {
+    const newSentence = sentence.replace(sentence.substring(indexOfNot, indexOfBad + wordBad.length), 'good')
+    console.log(newSentence)
+ } else {
+     console.log(sentence)
+ }
+
+/*if (sentence.indexOf(wordBad) > sentence.indexOf(wordNot)) {
    const newSentence = sentence.replace(sentence.substring(13,25), 'good')
    console.log(newSentence)
 } else {
     console.log(sentence)
-}
+}*/
