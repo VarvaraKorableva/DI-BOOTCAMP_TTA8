@@ -17,6 +17,13 @@ for (let i = 0; i < 6; i++ ) {
     myArr.push('* ')
     console.log(myArr.join(''))
 }
+/*
+let mySecondArr = '';
+
+for (let i = 0; i < 6; i++ ) {
+    mySecondArr += '* '
+    console.log(mySecondArr)
+}*/
 
 /*
 let mySecondArr = [
@@ -27,19 +34,7 @@ let mySecondArr = [
     [["* "], ["* "], ["* "], ["* "], ["* "]],
     [["* "], ["* "], ["* "], ["* "], ["* "], ["* "]],
 ]*/
-/*
-for(i in mySecondArr){
-    for (j in mySecondArr[i]) {
-        
-    }
-}*/
 
-/*
-for(i in mySecondArr) {
-    for (let j = 0; i.length; j++) {
-        console.log()
-    }
-}*/
 
 
 
