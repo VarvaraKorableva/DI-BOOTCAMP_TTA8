@@ -1,12 +1,28 @@
 const button = document.getElementById('button')
 
+const showLoader = () => {
+    const loader = document.createElement('p')
+    const textNode = document.createTextNode('Loading ...')
+    loader.appendChild(textNode)
+    loader.setAttribute('style', 'color: #fff')
+    const container = document.getElementById('container')
+    container.appendChild(loader);
+  };
+  
+  const hideLoader = () => {
+    const loader = document.getElementsByTagName('p')[0]
+    loader.setAttribute('style', 'display: none')
+  };
+
 const myQuery = async() => {
     try {
         const randomId = getRandomId(83)
+        showLoader()
         const res = await fetch(`https://www.swapi.tech/api/people/${randomId}`)
         const data = await res.json()
         const planet = await fetch(data.result.properties.homeworld)
         const homeworldData = await planet.json()
+        hideLoader()
         
         const container = document.getElementById('container')
 
@@ -44,7 +60,7 @@ const myQuery = async() => {
         const errorMessage = document.createElement('p')
         const errorMessageTextNode = document.createTextNode("Oh No! That person isn't available.")
         errorMessage.appendChild(errorMessageTextNode)
-        errorMessage.setAttribute('style', 'margin-bottom: 20px; margin-top: 0')
+        errorMessage.setAttribute('style', 'margin-top: 20px;')
         container.appendChild(errorMessage)
     }
 }
@@ -55,9 +71,11 @@ function getRandomId(max) {
 
 function handleClick() {
     const container = document.getElementById('container')
+
     while (container.firstChild) {
         container.removeChild(container.firstChild);
-      }
+    }
+
     myQuery()
 }
 
