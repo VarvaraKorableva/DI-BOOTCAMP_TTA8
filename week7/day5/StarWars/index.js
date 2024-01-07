@@ -57,6 +57,7 @@ const myQuery = async() => {
         container.appendChild(homeWorld)
     }
     catch(error) {
+        hideLoader()
         const errorMessage = document.createElement('p')
         const errorMessageTextNode = document.createTextNode("Oh No! That person isn't available.")
         errorMessage.appendChild(errorMessageTextNode)
