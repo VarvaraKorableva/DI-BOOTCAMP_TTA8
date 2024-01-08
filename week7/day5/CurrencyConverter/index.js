@@ -63,6 +63,4 @@ function handleSelect() {
 }
 
 window.addEventListener('DOMContentLoaded', getСurrencyData)
-//firstSelect.addEventListener('change', handleSelect)
-//secondSelect.addEventListener('change', handleSelect)
 btn.addEventListener('click', getResultData)
