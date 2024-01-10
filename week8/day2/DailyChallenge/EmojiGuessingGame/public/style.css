@@ -13,7 +13,6 @@
     align-items: center;
     justify-content: center;
     width: 450px;
-    height: 450px;
 }
 
 .pic-container {
@@ -26,20 +25,11 @@
 }
 
 .option {
-    border-radius: 20px;
-    border: 2px solid rgb(145, 145, 233);
     text-align: center;
     margin: 10px;
     padding: 8px;
-    cursor: pointer;
     width: 80px;
     visibility: hidden;
-}
-
-.option:hover {
-    background-color: rgb(135, 135, 246);
-    color: #fff;
-    cursor: pointer;
 }
 
 .btn {
@@ -53,4 +43,29 @@
 .btn:hover {
     background-color: rgb(135, 135, 246);
     color: #fff;
+}
+
+.btnCheck {
+    border: 2px solid rgb(135, 135, 246);
+    margin: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    visibility: hidden;
+}
+.btnCheck:hover {
+    background-color: rgb(135, 135, 246);
+    color: #fff;
+}
+.score__table {
+    color: rgb(135, 135, 246);
+}
+
+.input {
+    height: 40px;
+    width: 200px;
+    border-radius: 30px;
+    border: 2px solid rgb(135, 135, 246);
+    visibility: hidden;
+    text-align: center;
 }

@@ -14,12 +14,17 @@ const data = [
     { emoji: '🥦', name: 'Broccaly' },
     { emoji: '🍩', name: 'Donnat' },
     { emoji: '🍏', name: 'Apple' },
+    { emoji: '🦄', name: 'Unicorn' },
+    { emoji: '🦎', name: 'Lizard' },
+    { emoji: '🦓', name: 'Zebra' },
+    { emoji: '🦒', name: 'Giraffe' },
+    { emoji: '🦆', name: 'Duck' },
+
 ];
 
 app.use(express.static('public'));
 
 app.get('/api/data', (req, res) => {
-    //res.json(data);
     res.send(data)
 });
 
