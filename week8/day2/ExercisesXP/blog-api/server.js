@@ -60,3 +60,4 @@ app.delete("/posts/:postsId", (req, res) => {
     data.splice(index, 1);
     res.status(200).json("Post deleted");
 });  
+
