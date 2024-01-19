@@ -8,16 +8,20 @@ class DemoCarousel extends Component {
         return (
             <Carousel>
                 <div>
-                    <img src="assets/1.jpeg" />
-                    <p className="legend">Legend 1</p>
+                    <img src="../public/images/HongKong.jpeg" />
+                    <p className="legend">Hong Kong</p>
                 </div>
                 <div>
-                    <img src="assets/2.jpeg" />
-                    <p className="legend">Legend 2</p>
+                    <img src="../public/images/Japan.jpeg" />
+                    <p className="legend">Japan</p>
                 </div>
                 <div>
-                    <img src="assets/3.jpeg" />
-                    <p className="legend">Legend 3</p>
+                    <img src="../public/images/LasVegas.jpg" />
+                    <p className="legend">Las Vegas</p>
+                </div>
+                <div>
+                    <img src="../public/images/Macao.jpeg" />
+                    <p className="legend">Macao</p>
                 </div>
             </Carousel>
         );
