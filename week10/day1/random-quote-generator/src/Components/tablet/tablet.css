@@ -1,0 +1,13 @@
+.container {
+    width: 600px;
+    border-radius: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border: 1px solid black;
+}
+
+.container-wrapper {
+    min-height: 100vh;
+}
