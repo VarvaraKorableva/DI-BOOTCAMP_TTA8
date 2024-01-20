@@ -1,0 +1,42 @@
+[
+  {
+    "id": 2,
+    "firstName": "firstName",
+    "lastName": "lastName",
+    "email": "test@email.com",
+    "username": "username2",
+    "password": "$2b$10$nhTBZT.ek4CaJq2AmHCVhOztsYuzEYaVdJ1DFFWvakYgkik6qHsw6"
+  },
+  {
+    "id": 3,
+    "firstName": "firstName",
+    "lastName": "lastName",
+    "email": "thirdtest@email.com",
+    "username": "username3",
+    "password": "$2b$10$mGZu0pjIc2BTThnjNxiC8.lvNpOvwdo09K.z2qTjP2z1A3EJaOzX6"
+  },
+  {
+    "id": 4,
+    "firstName": " Varvara",
+    "lastName": "Korableva",
+    "email": "korableva@yandex.ru",
+    "username": "test102",
+    "password": "$2b$10$aDPAJDg14fWYNg9cFerc8Ol4sl.z5YrHz8E7NN35SWlnnFS2OIMSi"
+  },
+  {
+    "id": 5,
+    "firstName": " Varvara",
+    "lastName": "Korableva",
+    "email": "korablevatedst@yandex.ru",
+    "username": "test102fgew",
+    "password": "$2b$10$cgFftOK1FKO7c0wzVqeRiuakvjQj1bIqJ4s.zKKYk0ulpGI3FI6cW"
+  },
+  {
+    "id": 6,
+    "firstName": "Alena",
+    "lastName": "TestChangeSurname",
+    "email": "testChange@yandex.ru",
+    "username": "test102gfsergw",
+    "password": "$2b$10$vWT4lTnN2K8.FL8os7L6q.DKLwISiP6s4x46UUMtpxMGJL/jX0BWy"
+  }
+]

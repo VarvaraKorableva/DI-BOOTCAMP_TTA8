@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+    <h1>Register</h1>
+
+    <form id="registrationForm" style="display: flex; flex-direction: column; margin: auto; width: 300px;">
+
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" />
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" />
+
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" autocomplete="username" required />
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" autocomplete="current-password" required />
+
+        <button type="submit" id="reg__btn">Register</button>
+    </form>
+
+    <h2 id="message"></h2>
+    <a href="./signin.html">SignIn</a>
+    <script type="module" src="./signup.js"></script>
+</body>
+</html>
