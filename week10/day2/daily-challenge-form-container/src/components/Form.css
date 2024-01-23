@@ -1,0 +1,32 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    background-color: #deb887;
+    margin: 0;
+    align-items: flex-start;
+    padding: 10px;
+}
+
+.title {
+    background-color: #3b3636;
+    color: #fff;
+    padding: 10px;
+    margin: 0;
+}
+
+.input {
+    width: 50%;
+    margin: 10px;
+    margin-left: 0;
+    height: 30px;
+}
+
+.btn {
+    width: 100px;
+    height: 30px;
+    margin: 10px;
+}
+
+.dietary__subtitle {
+    margin-bottom: 10px;
+}

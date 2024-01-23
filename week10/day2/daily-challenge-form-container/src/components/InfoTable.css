@@ -1,0 +1,12 @@
+.body {
+    background-color: #1e5555;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.title {
+    width: 100%;
+}
