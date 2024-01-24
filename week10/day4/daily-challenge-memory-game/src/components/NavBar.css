@@ -1,0 +1,35 @@
+.navbar-container {
+    background-color: rgb(222, 69, 69);
+    color: #fff;
+    display: flex;
+    justify-content:space-between;
+    border-bottom: 2px solid #fff;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif;
+}
+
+.navbar-main-container {
+    
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(222, 69, 69);
+    color: #fff;
+}
+
+.navbar-score-container {
+    display: flex;
+    align-self: flex-end;
+    margin: 10px;
+    
+}
+
+.subtitle-container {
+    background: linear-gradient(to right, red, rgb(78, 27, 78));
+}
+
+.subtitle {
+    margin: 10px;
+}
+
+.navbar-title {
+    margin: 10px;
+}
