@@ -1,12 +1,12 @@
-import Card from './Card.js';
+import Card from './Card.js'
+import './Cards.css'
 
-function Field({ data }) {
+function Field({ data, extractYearFromDate }) {
 
-    console.log(data)
   return (
-    <ul>
+    <ul className='cards__field'>
       {data.map((item) => (
-        <Card key={item.id} item={item}></Card>
+        <Card key={item.id} item={item} extractYearFromDate={extractYearFromDate}></Card>
       ))}
     </ul>
   );

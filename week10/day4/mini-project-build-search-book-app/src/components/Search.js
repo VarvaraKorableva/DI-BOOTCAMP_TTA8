@@ -1,16 +1,10 @@
 import React from 'react'
 import './Search.css'
 
-function Search({getdata}) {
+function Search({getdata, sortOldest, sortNewest}) {
     const [inputs, setInputs] = React.useState({
         bookname: '',
-        /*lastname: '',
-        age: '',
-        gender: '',
-        destination: '',
-        nutsFree: false,
-        lactoseFree: false,
-        isVegan: false,*/
+        sort: 'Sort',
       });
     
       const handleInputs = (e) => {
@@ -24,6 +18,15 @@ function Search({getdata}) {
         getdata(inputs.bookname)
     }
 
+    const handleSortChange = () => {
+        if (inputs.sort === 'Newest') {
+          sortOldest()
+        }
+        if (inputs.sort === 'Oldest') {
+          sortNewest()
+        }
+      };
+
   return (
     <>
     <input
@@ -33,8 +36,11 @@ function Search({getdata}) {
         onChange={(e) => handleInputs(e)}></input>
     <button className='header__btn' onClick={handleGetdata}>Search</button>
 
-    <select className='header__select' name="sort" onChange={(e) => handleInputs(e)}>
-        <option value="Sort">Sort</option>
+    <select className='header__select' 
+            name="sort" 
+            value={inputs.sort}        
+            onChange={(e) => {handleInputs(e);handleSortChange();}}>
+        
         <option value="Newest">Newest</option>
         <option value="Oldest">Oldest</option>
     </select>

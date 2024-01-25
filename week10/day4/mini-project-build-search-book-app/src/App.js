@@ -9,15 +9,29 @@ import {getBooks} from './Api.js'
 function App() {
   const [data, setData] = React.useState([])
 
-/*function getdata(word) {
-    getBooks(word)
-      .then((res) => {
-        setData(res.items);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }*/
+  function sortOldest() {
+    let newData = [...data];
+
+    newData.sort((a, b) => {
+    const dateA = new Date(a.volumeInfo.publishedDate);
+    const dateB = new Date(b.volumeInfo.publishedDate);
+
+    return dateA - dateB;
+  });
+  setData(newData);
+  }
+
+  function sortNewest() {
+    let newData = [...data];
+
+    newData.sort((a, b) => {
+    const dateA = new Date(a.volumeInfo.publishedDate);
+    const dateB = new Date(b.volumeInfo.publishedDate);
+
+    return dateA - dateB;
+  });
+  setData(newData.reverse());
+  }
 
   async function getdata(word) {
     try {
@@ -27,11 +41,17 @@ function App() {
       console.error(error);
     }
   }
+
+  function extractYearFromDate(dateString) {
+    const date = new Date(dateString);
+    return date.getFullYear();
+  }
+
   return (
     <div className="App">
       <HeaderProject/>
-      <Search getdata={getdata}/>
-      <Field data={data}></Field>
+      <Search getdata={getdata} sortOldest={sortOldest} sortNewest={sortNewest}/>
+      <Field data={data} extractYearFromDate={extractYearFromDate}></Field>
     </div>
   );
 }

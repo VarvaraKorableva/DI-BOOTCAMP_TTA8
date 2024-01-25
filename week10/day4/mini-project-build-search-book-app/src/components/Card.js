@@ -1,11 +1,16 @@
-//import Card from './Card.js'
+import './Cards.css'
 
-function Card({item}) {
+function Card({item, extractYearFromDate}) {
+      
+      const publishedDate = item.volumeInfo.publishedDate;
+      const publishedYear = extractYearFromDate(publishedDate);
+
   return (
-  <li>
-    <img src={item.volumeInfo.imageLinks} alt={item.printType}></img>
-    <p>Author: {item.volumeInfo.authors}</p>
-    <p>Published: {item.volumeInfo.publishedDate}</p>
+  <li className="card">
+    <img src={item.volumeInfo.imageLinks.thumbnail} alt={item.printType}></img>
+    <p className='card__text__name'>{item.volumeInfo.title}</p>
+    <p className='card__text'>Author: {item.volumeInfo.authors}</p>
+    <p className='card__text'>Published: {publishedYear}</p>
   </li>
 
   );

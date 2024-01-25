@@ -1,5 +1,7 @@
 .header__input {
     height: 30px;
+    padding: 0;
+    
 }
 .header__btn {
     background-color: #343a40;
