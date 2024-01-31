@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+
+.category__delete__btn {
+  margin: 10px;
+  cursor: pointer;
+  background-color: rgb(156, 20, 206);
+}

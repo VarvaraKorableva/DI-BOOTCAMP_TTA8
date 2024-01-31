@@ -1,11 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
+import ToDoList from './features/ToDoList';
 
 function App() {
   return (
     <div className="App">
-      <input className='input'></input>
-      <button className='addBtn'>Add ToDo</button>
+       <ToDoList/>
     </div>
   );
 }
